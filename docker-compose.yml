@@ -1,0 +1,10 @@
+services:
+  php:
+    container_name: ci3
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/
