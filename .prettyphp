@@ -1,0 +1,8 @@
+{
+    "src": [
+        "application/",
+        "system/"
+    ],
+    "eol": "lf",
+    "psr12": true
+}

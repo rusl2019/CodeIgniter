@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -50,7 +51,7 @@ $lang['ut_failed'] = 'Failed';
 $lang['ut_boolean'] = 'Boolean';
 $lang['ut_integer'] = 'Integer';
 $lang['ut_float'] = 'Float';
-$lang['ut_double'] = 'Float'; // can be the same as float
+$lang['ut_double'] = 'Float';  // can be the same as float
 $lang['ut_string'] = 'String';
 $lang['ut_array'] = 'Array';
 $lang['ut_object'] = 'Object';
