@@ -146,35 +146,25 @@ class CI_DB_mysql_driver extends CI_DB
                 : FALSE;
         }
 
-        if (is_resource($this->conn_id)) {
-            if (!mysql_set_charset($this->char_set, $this->conn_id)) {
-                log_message('error', "Database: Unable to set the configured connection charset ('{$this->char_set}').");
-                $this->close();
-                return ($this->db->debug) ? $this->display_error('db_unable_to_set_charset', $this->char_set) : FALSE;
+        if (isset($this->stricton) && is_resource($this->conn_id)) {
+            if ($this->stricton) {
+                $this->simple_query('SET SESSION sql_mode = CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")');
+            } else {
+                $this->simple_query(
+                    "SET SESSION sql_mode =
+\t\t\t\t\tREPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+\t\t\t\t\t@@sql_mode,
+\t\t\t\t\t\"STRICT_ALL_TABLES,\", \"\"),
+\t\t\t\t\t\",STRICT_ALL_TABLES\", \"\"),
+\t\t\t\t\t\"STRICT_ALL_TABLES\", \"\"),
+\t\t\t\t\t\"STRICT_TRANS_TABLES,\", \"\"),
+\t\t\t\t\t\",STRICT_TRANS_TABLES\", \"\"),
+\t\t\t\t\t\"STRICT_TRANS_TABLES\", \"\")"
+                );
             }
-
-            if (isset($this->stricton)) {
-                if ($this->stricton) {
-                    $this->simple_query('SET SESSION sql_mode = CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")');
-                } else {
-                    $this->simple_query(
-                        "SET SESSION sql_mode =
-\t\t\t\t\t\tREPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-\t\t\t\t\t\t@@sql_mode,
-\t\t\t\t\t\t\"STRICT_ALL_TABLES,\", \"\"),
-\t\t\t\t\t\t\",STRICT_ALL_TABLES\", \"\"),
-\t\t\t\t\t\t\"STRICT_ALL_TABLES\", \"\"),
-\t\t\t\t\t\t\"STRICT_TRANS_TABLES,\", \"\"),
-\t\t\t\t\t\t\",STRICT_TRANS_TABLES\", \"\"),
-\t\t\t\t\t\t\"STRICT_TRANS_TABLES\", \"\")"
-                    );
-                }
-            }
-
-            return $this->conn_id;
         }
 
-        return FALSE;
+        return $this->conn_id;
     }
 
     // --------------------------------------------------------------------
@@ -215,6 +205,19 @@ class CI_DB_mysql_driver extends CI_DB
         }
 
         return FALSE;
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Set client character set
+     *
+     * @param	string	$charset
+     * @return	bool
+     */
+    protected function _db_set_charset($charset)
+    {
+        return mysql_set_charset($charset, $this->conn_id);
     }
 
     // --------------------------------------------------------------------

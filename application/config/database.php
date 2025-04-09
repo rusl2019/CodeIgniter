@@ -6,14 +6,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * DATABASE CONNECTIVITY SETTINGS
  * -------------------------------------------------------------------
  * This file will contain the settings needed to access your database.
- * 
+ *
  * For complete instructions please consult the 'Database Connection'
  * page of the User Guide.
- * 
+ *
  * -------------------------------------------------------------------
  * EXPLANATION OF VARIABLES
  * -------------------------------------------------------------------
- * 
+ *
  * ['dsn']      The full DSN string describe a connection to the database.
  * ['hostname'] The hostname of your database server.
  * ['username'] The username used to connect to the database
@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * ['dbdriver'] The database driver. e.g.: mysqli.
  * Currently supported:
  * cubrid, ibase, mssql, mysql, mysqli, oci8,
- * odbc, pdo, postgre, sqlite3, sqlsrv
+ * odbc, pdo, postgre, sqlite, sqlite3, sqlsrv
  * ['dbprefix'] You can add an optional prefix, which will be added
  * to the table name when using the  Query Builder class
  * ['pconnect'] TRUE/FALSE - Whether to use a persistent connection
@@ -40,17 +40,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Sites using Latin-1 or UTF-8 database character set and collation are unaffected.
  * ['swap_pre'] A default table prefix that should be swapped with the dbprefix
  * ['encrypt']  Whether or not to use an encrypted connection.
- * 
+ *
  * 'mysql' (deprecated), 'sqlsrv' and 'pdo/sqlsrv' drivers accept TRUE/FALSE
  * 'mysqli' and 'pdo/mysql' drivers accept an array with the following options:
- * 
+ *
  * 'ssl_key'    - Path to the private key file
  * 'ssl_cert'   - Path to the public key certificate file
  * 'ssl_ca'     - Path to the certificate authority file
  * 'ssl_capath' - Path to a directory containing trusted CA certificates in PEM format
  * 'ssl_cipher' - List of *allowed* ciphers to be used for the encryption, separated by colons (':')
  * 'ssl_verify' - TRUE/FALSE; Whether verify the server certificate or not
- * 
+ *
  * ['compress'] Whether or not to use client compression (MySQL only)
  * ['stricton'] TRUE/FALSE - forces 'Strict Mode' connections
  * - good for ensuring strict SQL while developing
@@ -63,11 +63,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * CodeIgniter will store the SQL statement for debugging purposes.
  * However, this may cause high memory usage, especially if you run
  * a lot of SQL queries ... disable this to avoid that problem.
- * 
+ *
  * The $active_group variable lets you choose which connection group to
  * make active.  By default there is only one group (the 'default' group).
+ *
+ * The $query_builder variables lets you determine whether or not to load
+ * the query builder class.
  */
 $active_group = 'default';
+$query_builder = TRUE;
+
 $db['default'] = array(
     'dsn' => '',
     'hostname' => 'localhost',

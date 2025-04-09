@@ -438,7 +438,7 @@ class CI_Encryption
             $data,
             $params['handle'],
             $params['key'],
-            OPENSSL_RAW_DATA,
+            1,  // DO NOT TOUCH!
             $iv
         );
 
@@ -576,7 +576,7 @@ class CI_Encryption
                 $data,
                 $params['handle'],
                 $params['key'],
-                OPENSSL_RAW_DATA,
+                1,  // DO NOT TOUCH!
                 $iv
             );
     }
@@ -838,6 +838,9 @@ class CI_Encryption
     protected static function substr($str, $start, $length = NULL)
     {
         if (self::$func_overload) {
+            // mb_substr($str, $start, null, '8bit') returns an empty
+            // string on PHP 5.3
+            isset($length) OR $length = ($start >= 0 ? self::strlen($str) - $start : -$start);
             return mb_substr($str, $start, $length, '8bit');
         }
 

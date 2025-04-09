@@ -10,17 +10,6 @@ interface and logical structure to access these libraries. CodeIgniter lets
 you creatively focus on your project by minimizing the amount of code needed
 for a given task.
 
-*************
-CodeIgniter 3
-*************
-
-This repository is for the legacy version, CodeIgniter 3.
-`CodeIgniter 4 <https://github.com/codeigniter4/CodeIgniter4>`_ is the latest
-version of the framework.
-
-CodeIgniter 3 is the legacy version of the framework, intended for use with PHP
-5.6+. This version is in maintenance, receiving mostly just security updates.
-
 *******************
 Release Information
 *******************
@@ -42,7 +31,7 @@ Server Requirements
 
 PHP version 5.6 or newer is recommended.
 
-It should work on 5.4.8 as well, but we strongly advise you NOT to run
+It should work on 5.3.7 as well, but we strongly advise you NOT to run
 such old versions of PHP, because of potential security and performance
 issues, as well as missing features.
 
@@ -64,10 +53,10 @@ agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/so
 Resources
 *********
 
--  `User Guide <https://codeigniter.com/userguide3/>`_
+-  `User Guide <https://codeigniter.com/docs>`_
 -  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
 -  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <https://forum.codeigniter.com/>`_
+-  `Community Forums <http://forum.codeigniter.com/>`_
 -  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
 -  `Community Slack Channel <https://codeigniterchat.slack.com>`_
 
